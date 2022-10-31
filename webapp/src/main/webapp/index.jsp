@@ -1,2 +1,2 @@
-<h1> ISET-Sousse Deploiement avec GIT-->jenkins-->webapp.war-->Deploy -->tomcat </h1>
+<h1> ISET-Sousse Build et Deploiement avec : GIT-->Jenkins-->webapp.war-->Deploy -->Tomcat </h1>
 
