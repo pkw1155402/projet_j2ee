@@ -1,7 +1,7 @@
 node {
   
     stage('Clone') {
-        git credentialsId: 'jenkins', url: 'git@gitlab.com:f4045/projet_j2ee.git'
+        git credentialsId: 'jenkins', url: 'https://github.com/EmnaNet/projet_j2ee.git'
 
     }
     stage('SonarQube analysis') {
@@ -23,7 +23,7 @@ node {
     }
     
     stage('deploy')
-        deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://3.72.207.31:8080/')], contextPath: null, war: '**/*.war'
+        deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://localhost:8080/')], contextPath: null, war: '**/*.war'
     
 
 }
