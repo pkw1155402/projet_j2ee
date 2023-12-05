@@ -44,6 +44,6 @@ stages:
       displayName: display current directory
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)/'
+        PathtoPublish: '$(Build.SourcesDirectory)/j2eedemo.tar'
         ArtifactName: 'drop'
         publishLocation: 'Container'
