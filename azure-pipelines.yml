@@ -29,7 +29,7 @@ stages:
         mavenAuthenticateFeed: false
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
-    - script: 
+    - script: |
         pwd
         ls -l
         sed -i "s/$(Build.SourcesDirectory)/$(Build.SourcesDirectory)/g" $(Build.SourcesDirectory)/Dockerfile
