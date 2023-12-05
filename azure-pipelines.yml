@@ -29,16 +29,16 @@ stages:
         mavenAuthenticateFeed: false
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(Build.BuildId)
+    # - task: Docker@2
+    #   displayName: Build an image
+    #   inputs:
+    #     command: build
+    #     dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+    #     tags: |
+    #       $(Build.BuildId)
     - script: |
         pwd
-        echo $(Build.BuildId)
+        docker build -t pcsregistrytest.azurecr.io/j2eedemo:v1.0 .
         docker image list
         docker tag $(Build.BuildId) pcsregistrytest.azurecr.io/j2eedemo:v1.0
         docker image list
