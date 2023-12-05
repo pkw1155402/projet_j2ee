@@ -31,18 +31,10 @@ stages:
         sonarQubeRunAnalysis: false
     - script: 
         pwd
-        ls
+        ls -l
+        sed -i "s/$(Build.SourcesDirectory)/$(Build.SourcesDirectory)/g" $(Build.SourcesDirectory)/Dockerfile
+        cat $(Build.SourcesDirectory)/Dockerfile
       displayName: display current directory
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - script: 
-        pwd
-        ls
-      displayName: display current directory
-
     - task: Docker@2
       displayName: Build an image
       inputs:
