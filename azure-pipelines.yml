@@ -38,8 +38,7 @@ stages:
           $(tag)
     - script: |
         pwd
-        ls -l
-        ls -l $(Build.SourcesDirectory)/webapps
+        docker image ls
       displayName: display current directory
     - task: PublishBuildArtifacts@1
       inputs:
