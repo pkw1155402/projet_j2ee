@@ -35,10 +35,12 @@ stages:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
-          $(tag)
+          pcsregistrytest.azurecr.io/j2eedemo
     - script: |
         pwd
         docker image list
+        docker save pcsregistrytest.azurecr.io/j2eedemo -o j2eedemo.tar
+        ls -l
       displayName: display current directory
     - task: PublishBuildArtifacts@1
       inputs:
