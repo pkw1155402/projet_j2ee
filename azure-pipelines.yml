@@ -40,8 +40,6 @@ stages:
         pwd
         docker build -t pcsregistrytest.azurecr.io/j2eedemo:v1.0 .
         docker image list
-        docker tag $(Build.BuildId) pcsregistrytest.azurecr.io/j2eedemo:v1.0
-        docker image list
         docker save pcsregistrytest.azurecr.io/j2eedemo:v1.0 -o j2eedemo.tar
         ls -l
       displayName: display current directory
