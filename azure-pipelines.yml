@@ -32,7 +32,7 @@ stages:
     - script: |
         pwd
         ls -l
-        sed -i "s/$(Build.SourcesDirectory)/$(Build.SourcesDirectory)/g" $(Build.SourcesDirectory)/Dockerfile
+        sed -i 's/$(Build.SourcesDirectory)/'"$(Build.SourcesDirectory)"'/g' $(Build.SourcesDirectory)/Dockerfile
         cat $(Build.SourcesDirectory)/Dockerfile
       displayName: display current directory
     - task: Docker@2
