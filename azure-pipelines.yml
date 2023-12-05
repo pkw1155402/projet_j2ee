@@ -33,10 +33,6 @@ stages:
         pwd
         ls
       displayName: display current directory
-
-- stage: Build
-  displayName: Build image
-  jobs:
   - job: Build
     displayName: Build
     pool:
