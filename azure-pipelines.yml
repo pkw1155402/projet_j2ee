@@ -38,7 +38,7 @@ stages:
           $(tag)
     - script: |
         pwd
-        docker image ls
+        docker image list
       displayName: display current directory
     - task: PublishBuildArtifacts@1
       inputs:
