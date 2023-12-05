@@ -29,11 +29,6 @@ stages:
         mavenAuthenticateFeed: false
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
-    - script: |
-        pwd
-        ls -l
-        cat $(Build.SourcesDirectory)/Dockerfile
-      displayName: display current directory
     - task: Docker@2
       displayName: Build an image
       inputs:
@@ -41,8 +36,13 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+    - script: |
+        pwd
+        ls -l
+        ls -l $(Build.SourcesDirectory)/webapps
+      displayName: display current directory
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        PathtoPublish: '$(Build.SourcesDirectory)/'
         ArtifactName: 'drop'
         publishLocation: 'Container'
