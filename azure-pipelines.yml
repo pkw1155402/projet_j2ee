@@ -40,10 +40,10 @@ stages:
         pwd
         docker build -t pcsregistrytest.azurecr.io/j2eedemo:v1.0 .
         docker image list
-        docker save pcsregistrytest.azurecr.io/j2eedemo:v1.0 -o j2eedemo.tar
+        # docker save pcsregistrytest.azurecr.io/j2eedemo:v1.0 -o j2eedemo.tar
         ls -l
         cat $(ACRKEY) | docker login --username foo --password-stdin
-        docker push PCSRegistryTest/samples/hello-world
+        docker push pcsregistrytest.azurecr.io/j2eedemo:v1.0
         # az cloud set --name AzureChinaCloud
         # az login
         # az acr login --name pcsregistrytest
