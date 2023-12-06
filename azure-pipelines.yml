@@ -62,6 +62,6 @@ stages:
         trafficSplitMethod: 'smi'
         percentage: '50'
         baselineAndCanaryReplicas: '1'
-        manifests: 'deployment.yml'
+        manifests: 'deployment.yaml'
         containers: 'pcsregistrytest.azurecr.io/j2eedemo:v1.0'
         imagePullSecrets: 'pcsregistrytest.azurecr.io/j2eedemo:v1.0'
