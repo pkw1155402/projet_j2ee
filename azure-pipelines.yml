@@ -42,6 +42,9 @@ stages:
         docker image list
         docker save pcsregistrytest.azurecr.io/j2eedemo:v1.0 -o j2eedemo.tar
         ls -l
+        az login
+        az acr login --name PCSRegistryTest
+        docker push PCSRegistryTest/samples/hello-world
         # az cloud set --name AzureChinaCloud
         # az login
         # az acr login --name pcsregistrytest
