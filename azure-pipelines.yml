@@ -45,7 +45,19 @@ stages:
         az cloud set --name AzureChinaCloud
         az login
         az acr login --name pcsregistrytest
-        docker push pcsregistrytest.azurecr.io/j2eedemo:v1.0
+        docker push - task: KubernetesManifest@1
+  inputs:
+    action: 'deploy'
+    connectionType: 'kubernetesServiceConnection'
+    kubernetesServiceConnection: 'DEV-PCS_K8S-pcs-poc-1701827963953'
+    namespace: 'pcs-poc'
+    strategy: 'canary'
+    trafficSplitMethod: 'smi'
+    percentage: '50'
+    baselineAndCanaryReplicas: '1'
+    manifests: 'deployment.yml'
+    containers: 'pcsregistrytest.azurecr.io/j2eedemo:v1.0'
+    imagePullSecrets: 'pcsregistrytest.azurecr.io/j2eedemo:v1.0'
       displayName: display current directory
     - task: PublishBuildArtifacts@1
       inputs:
