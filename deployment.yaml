@@ -1,0 +1,26 @@
+apiVerion: apps/v1
+kind: Deployment
+metadata:
+  name: pcs-poc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pcs-poc
+      version: v1.0
+  template:
+    metadata:
+      labels:
+        app: pcs-poc
+        version: v1.0
+    spec:
+      containers:
+      - name: pcs-poc
+        image: 
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8080
+            targetPort: 8080
+            port: 80
+            
+            
