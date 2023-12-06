@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pcs-poc
-        image: 
+        image: pcsregistrytest.azurecr.io/j2eedemo:v1.0
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8080
