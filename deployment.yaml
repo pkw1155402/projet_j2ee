@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pcs-poc
+  namespace: pcs-poc
 spec:
   replicas: 2
   selector:
@@ -20,7 +21,6 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8080
-            targetPort: 8080
-            port: 80
+
             
             
