@@ -42,25 +42,26 @@ stages:
         docker image list
         docker save pcsregistrytest.azurecr.io/j2eedemo:v1.0 -o j2eedemo.tar
         ls -l
-        az cloud set --name AzureChinaCloud
-        az login
-        az acr login --name pcsregistrytest
-        docker push - task: KubernetesManifest@1
-  inputs:
-    action: 'deploy'
-    connectionType: 'kubernetesServiceConnection'
-    kubernetesServiceConnection: 'DEV-PCS_K8S-pcs-poc-1701827963953'
-    namespace: 'pcs-poc'
-    strategy: 'canary'
-    trafficSplitMethod: 'smi'
-    percentage: '50'
-    baselineAndCanaryReplicas: '1'
-    manifests: 'deployment.yml'
-    containers: 'pcsregistrytest.azurecr.io/j2eedemo:v1.0'
-    imagePullSecrets: 'pcsregistrytest.azurecr.io/j2eedemo:v1.0'
-      displayName: display current directory
+        # az cloud set --name AzureChinaCloud
+        # az login
+        # az acr login --name pcsregistrytest
+        # docker push 
+      displayName: Build Image
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.SourcesDirectory)/j2eedemo.tar'
         ArtifactName: 'drop'
         publishLocation: 'Container'
+    - task: KubernetesManifest@1
+      inputs:
+        action: 'deploy'
+        connectionType: 'kubernetesServiceConnection'
+        kubernetesServiceConnection: 'DEV-PCS_K8S-pcs-poc-1701827963953'
+        namespace: 'pcs-poc'
+        strategy: 'canary'
+        trafficSplitMethod: 'smi'
+        percentage: '50'
+        baselineAndCanaryReplicas: '1'
+        manifests: 'deployment.yml'
+        containers: 'pcsregistrytest.azurecr.io/j2eedemo:v1.0'
+        imagePullSecrets: 'pcsregistrytest.azurecr.io/j2eedemo:v1.0'
