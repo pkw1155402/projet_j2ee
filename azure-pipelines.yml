@@ -42,7 +42,7 @@ stages:
         docker image list
         # docker save pcsregistrytest.azurecr.io/j2eedemo:v1.0 -o j2eedemo.tar
         ls -l
-        cat "1Ls5CZ8DA2Do53EbV6V80LIJ/Vix8n2uJ1rDpnIdU++ACRDnwP3F" | docker login --username foo --password-stdin
+        echo $(ACRKEY) | docker login --username foo --password-stdin
         docker push pcsregistrytest.azurecr.io/j2eedemo:v1.0
         # az cloud set --name AzureChinaCloud
         # az login
