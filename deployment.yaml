@@ -38,7 +38,7 @@ kind: Ingress
 metadata:
   name: pcs-poc
 spec:
-  ingressClassName: azure-application.gateway
+  ingressClassName: azure-application-gateway
   rules:
   - host: www.avtrace2.com
     http:
