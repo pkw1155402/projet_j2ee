@@ -28,7 +28,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort:8080
+    targetPort: 8080
   selector:
     app: pcs-poc
   type: ClusterIP
