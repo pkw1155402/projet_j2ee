@@ -71,8 +71,8 @@ stages:
       inputs:
         action: 'deploy'
         connectionType: 'kubernetesServiceConnection'
-        kubernetesServiceConnection: 'DEV-PCS_K8S-pcs-poc-1701827963953'
-        namespace: 'pcs-poc'
+        kubernetesServiceConnection: 'PCS_K8S'
+        namespace: 'default'
         manifests: 'deployment.yaml'
         containers: 'pcsregistrytest.azurecr.io/j2eedemo:v1.0'
         imagePullSecrets: 'pcsregistrytest.azurecr.io/j2eedemo:v1.0'
